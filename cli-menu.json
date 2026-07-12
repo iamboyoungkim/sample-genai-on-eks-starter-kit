@@ -59,11 +59,11 @@
     { "dir": "ai-agent", "name": "AI Agent", "components": [{ "dir": "openclaw", "name": "OpenClaw" }] }
   ],
   "exampleCategories": [
-    { "dir": "mcp-server", "name": "MCP Server", "examples": [{ "dir": "calculator", "name": "Calculator" }] },
+    { "dir": "mcp-server", "name": "MCP Server", "examples": [{ "dir": "calculator", "name": "Calculator" }, { "dir": "cost-analysis", "name": "Cost Analysis" }] },
     {
       "dir": "strands-agents",
       "name": "Strands Agents",
-      "examples": [{ "dir": "calculator-agent", "name": "Calculator Agent" }]
+      "examples": [{ "dir": "calculator-agent", "name": "Calculator Agent" }, { "dir": "cost-analysis-agent", "name": "Cost Analysis Agent" }]
     },
     {
       "dir": "agno",
