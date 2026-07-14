@@ -15,7 +15,7 @@ The starter kit includes the configurable components and examples from several c
 - Vector Database - [Qdrant](https://qdrant.tech), [Chroma](https://docs.trychroma.com), [Milvus](https://milvus.io)
 - Workflow Automation - [n8n](https://docs.n8n.io)
 - AI Agent - [OpenClaw](https://github.com/openclaw/openclaw)
-- MCP Server - [FastMCP 2.0](https://gofastmcp.com)
+- MCP Server - [FastMCP 2.0](https://gofastmcp.com) (Calculator, AWS Cost Analysis)
 - AI Agent Framework - [Strands Agents ](https://strandsagents.com), [Agno](https://docs.agno.com)
 
 ## Prerequisites
@@ -142,6 +142,54 @@ You can install or uninstall individual components/examples using the CLI:
 # Examples:
 # ./cli ai-gateway litellm uninstall
 # ./cli strands-agents calculator-agent uninstall
+```
+
+## AWS Cost Analysis Agent
+
+An AI-powered AWS cost analysis chatbot that uses [Strands Agents](https://strandsagents.com) with a custom [FastMCP](https://gofastmcp.com) server to query AWS Cost Explorer via natural language.
+
+### Architecture
+
+```
+Open WebUI → Strands Agent → MCP Server (Cost Analysis) → AWS Cost Explorer API
+                  ↓
+            LiteLLM → LLM (vLLM/Bedrock)
+```
+
+### Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `get_total_cost` | Get total AWS cost for a specified period |
+| `get_cost_by_service` | Cost breakdown by AWS service (Top N) |
+| `get_daily_cost_trend` | Daily cost trend for spending pattern analysis |
+| `get_cost_comparison` | Compare costs between current and previous periods |
+| `get_service_cost_detail` | Detailed cost for a specific AWS service |
+
+### Installation
+
+```bash
+# 1. Deploy the MCP Server (Cost Explorer API wrapper)
+./cli mcp-server cost-analysis install
+
+# 2. Deploy the Strands Agent (registers as a model in Open WebUI)
+./cli strands-agents cost-analysis-agent install
+```
+
+### Usage
+
+After installation, select **"Strands Agents - AWS Cost Analysis"** from the model dropdown in Open WebUI and ask questions like:
+
+- "What's my total AWS cost this month?"
+- "Show me top 5 services by cost"
+- "Compare costs with last month"
+- "Show daily EC2 cost trend for the last 2 weeks"
+
+### Uninstall
+
+```bash
+./cli strands-agents cost-analysis-agent uninstall
+./cli mcp-server cost-analysis uninstall
 ```
 
 ## LLM/Embedding Model Management

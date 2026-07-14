@@ -123,6 +123,13 @@
           "USE_MCP_TOOLS": true,
           "USE_MCP_GATEWAY": true
         }
+      },
+      "cost-analysis-agent": {
+        "env": {
+          "USE_BEDROCK": false,
+          "BEDROCK_MODEL": "us.anthropic.claude-sonnet-4-20250514-v1:0",
+          "LITELLM_MODEL_NAME": "vllm/qwen3-30b-instruct-fp8"
+        }
       }
     },
     "openclaw": {
